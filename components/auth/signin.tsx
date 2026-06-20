@@ -1,18 +1,37 @@
+'use client'
 import React, { useState } from 'react';
+import  {useRouter} from 'next/navigation';
 
 const SignIn : React.FC =()=>{
     const [email, setEmail]   = useState('');
     const [password, setPassword] = useState('');
-    
-      const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [errors , setErrors] = useState<Record<string, string[]>>({});
+    const router = useRouter();
+ 
+
+      const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Handle login logic here
+        setErrors({});
+
+        const res = await fetch('/api/SignIn' , {
+          method: 'POST' ,
+          headers: {'Content-type': 'application/json'},
+          body: JSON.stringify({email , password})
+        })
+
+        const data = await res.json();
+
+        if(!res.ok){
+          setErrors(data.errors ?? { form: [data.message ?? 'Something went wrong'] });
+        return;
+        }
+        router.push('/user')
       };
 
     return(
         <>
         <div className="sign-in">
-         <h2> Login </h2>
+         <h2> SignIN </h2>
          <form onSubmit={handleSubmit}>
             <label htmlFor=""> Email </label>
             <input 
@@ -29,6 +48,10 @@ const SignIn : React.FC =()=>{
             value ={password} 
              onChange={(e)=> setPassword(e.target.value)}
              required/> 
+             <button type='submit' 
+             className='bg-green-400 rounded p-3'>
+              submit
+             </button>
          </form>
             </div>
         </>
