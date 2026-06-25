@@ -21,3 +21,13 @@ model User {
 
 }
 
+model passwordReset {
+  id String @id @default(uuid())
+  email String 
+  code String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@unique([email])
+  @@index([email])
+}
+

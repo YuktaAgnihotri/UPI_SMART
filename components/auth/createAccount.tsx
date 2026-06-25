@@ -38,7 +38,10 @@ if (res.ok) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: userName, email }),
   }).catch(err => console.error('Email failed:', err)); // don't block UI
+  
+  
   alert("Registration successful!"); // or use a toast
+ 
   router.push('/user');
 }
       
@@ -96,7 +99,7 @@ if (res.ok) {
         >
           {loading ? 'Loading...' : 'Login'}
         </button>
-        <p className='text-sm flex justify-end hover:text-red-600'>forgot password</p>
+
       </form>
     </div>
   );

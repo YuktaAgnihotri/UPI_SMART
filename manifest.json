@@ -1,0 +1,15 @@
+{
+  "name": "UPI-Smart",
+  "short_name": "UPI-Smart",
+  "description": "UPI Smart Dashboard",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any"
+    }
+  ]
+}

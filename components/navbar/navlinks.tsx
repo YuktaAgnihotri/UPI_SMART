@@ -6,7 +6,7 @@ export const navLinks: linkpage[] = [
         url : '/signup'
     },
     {    id: 2,
-        title : "Login here",
+        title : "create account",
         url : '/login'
     }
 ]; 
