@@ -13,13 +13,12 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{ "name": "next" }],
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",                    // ← Add this back (it's not deprecated)
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@prisma/client": ["./lib/generated/prisma"]   // ← Fix the path (remove the ..)
     }
   },
   "include": [
@@ -28,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "app/db/db.config.ts"  ],
+    "**/*.mts",
+    "app/db/db.config.ts"
+  ],
   "exclude": ["node_modules"]
 }
